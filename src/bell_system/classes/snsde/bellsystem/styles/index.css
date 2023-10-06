@@ -1,0 +1,119 @@
+.pane{
+    -fx-background-color:  #f2f2f2;
+}
+.default{
+    -fx-font-family: 'System';
+    -fx-font-size: 15;
+    -fx-alignment: center;
+}
+.Caption{
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+.lbl-2{
+    -fx-font-family: 'System';
+    -fx-font-size: 12;
+}
+.mlbl1{
+    -fx-alignment: center-right;
+    -fx-font-family: 'System';
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.mlbl2{
+    -fx-alignment: center-right;
+    -fx-font-size: 14;
+    -fx-font-family: 'System';
+}
+.mlbl{
+    -fx-font-family: 'System';
+    -fx-font-size: 58;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-padding: 0px 0px 0px 10px;
+}
+
+.timelbl{
+    -fx-alignment: center;
+    -fx-font-size: 94;
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+}
+
+.vlbl{
+    -fx-alignment: center-right;
+    -fx-font-family: 'System';
+    -fx-font-size: 18;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+.blb{
+    -fx-alignment: center-right;
+    -fx-font-family: 'System';
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+}
+
+.msglbl{
+    -fx-alignment: center;
+    -fx-font-family: 'System';
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+}
+
+.sch-btn{
+    -fx-font-family: 'System';
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+    -fx-background-color: #17b80f;
+}
+.stlbl{
+    -fx-alignment: center;
+    -fx-font-family: 'System';
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+.path-in{
+    -fx-font-family: 'System';
+    -fx-font-size: 17;
+    -fx-font-style: italic;
+}
+.vSlider{
+    -fx-orientation: horizontal;
+    -fx-show-tick-labels: true;
+    -fx-show-tick-marks: false;
+    -fx-major-tick-unit: 25;
+    -fx-minor-tick-count: 5;
+    -fx-snap-to-ticks: true;
+    -fx-block-increment: 10;
+}
+.progress-bar{
+    -color-progress-bar-track: #d1d1d6;
+}
+
+.bellTitle{
+    -fx-alignment: center;
+    -fx-font-family: 'System';
+    -fx-font-size: 20;
+    -fx-font-weight: bolder;
+    -fx-font-style: italic;
+}
+.about{
+
+}
+.about > *.button-bar > *.container{
+
+}
+.about > *.label.content{
+    -fx-font-size: 14px;
+}
+.about:header *.header-panel{
+
+}
+.about:header *.header-panel *.label{
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
