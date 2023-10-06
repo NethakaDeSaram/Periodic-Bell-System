@@ -132,12 +132,20 @@ public class SystemB extends AnchorPane {
     public ClipboardContent content = new ClipboardContent();
 
     public final void createInterface() {
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), this);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.setCycleCount(1);
+
+        fadeIn.play();
+
         topPane();
         playerPane();
         schPane();
         timePane();
         bellPane();
         footPane();
+
     }
 
     public final void topPane() {
@@ -581,6 +589,7 @@ public class SystemB extends AnchorPane {
     }
 
     public void shutFunc() {
+        //Still dont know how to implement
         nf.showmsg("w", "System Driver Failure", msglbl);
     }
 
@@ -598,17 +607,21 @@ public class SystemB extends AnchorPane {
         exitA.initOwner(getScene().getWindow());
         exitA.showAndWait();
         if (exitA.getResult().getButtonData() == ButtonData.YES) {
-            exit();
-        }
-    }
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), this);
+            fadeOut.setFromValue(1);
+            fadeOut.setToValue(0);
+            fadeOut.setCycleCount(1);
 
-    public void exit() {
-        Utils.log("END", "SYSTEM", "Running Shutting Down Task...");
-        Utils.log("END", "SYSTEM", "Running Finalize Deamon...");
-        Utils.log("END", "SYSTEM", "System Dump :-");
-        Utils.logout();
-        Platform.exit();
-        System.exit(0);
+            fadeOut.play();
+            fadeOut.setOnFinished((e) -> {
+                Utils.log("END", "SYSTEM", "Running Shutting Down Task...");
+                Utils.log("END", "SYSTEM", "Running Finalize Deamon...");
+                Utils.log("END", "SYSTEM", "System Dump :-");
+                Utils.logout();
+                Platform.exit();
+                System.exit(0);
+            });
+        }
     }
 
     public void crash() {
