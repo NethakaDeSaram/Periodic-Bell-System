@@ -1,6 +1,9 @@
 .pane{
     -fx-background-color:  #f2f2f2;
 }
+.splash{
+    -fx-background-color:  #f5f4f2;
+}
 .default{
     -fx-font-family: 'System';
     -fx-font-size: 15;
@@ -114,6 +117,40 @@
 }
 .about:header *.header-panel *.label{
     -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+
+.s_lbl1{
+    -fx-alignment: center-left;
+    -fx-font-family: 'System';
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
+
+}
+.s_lbl2{
+    -fx-alignment: center-left;
+    -fx-font-family: 'System';
+    -fx-font-size: 48;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+.s_lbl3{
+    -fx-alignment: center-left;
+    -fx-font-family: 'System';
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+.s_lbl4{
+    -fx-alignment: center-left;
+    -fx-font-family: 'System';
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
+.s_lbl5{
+    -fx-alignment: center-left;
+    -fx-font-family: 'System';
+    -fx-font-size: 18;
     -fx-font-weight: bold;
     -fx-font-style: italic;
 }

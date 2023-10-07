@@ -42,12 +42,12 @@ public class Launcher extends Application {
         var scene = new Scene(root, 940, 690, false);
         scene.setFill(Color.LIGHTGRAY);
 
-        scene.getStylesheets().addAll(Res.getResource("styles/index.css").toString());
-        setUserAgentStylesheet(Res.getResource("styles/cupertino-light.css").toString());
+        scene.getStylesheets().addAll(Res.getResource("assets/index.css").toString());
+        setUserAgentStylesheet(Res.getResource("assets/cupertino-light.css").toString());
 
         stage.setScene(scene);
         stage.setTitle("Bell System");
-        File iconFile = new File("icon.png");
+        File iconFile = new File(Res.getResource("assets/icon.png"));
         Image icon = new Image(iconFile.getAbsolutePath());
         stage.getIcons().add(icon);
         stage.setResizable(false);

@@ -3,9 +3,6 @@
 package snsde.bellsystem.system;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,8 +10,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -46,16 +41,12 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import org.kordamp.ikonli.feather.Feather;
 import org.kordamp.ikonli.javafx.FontIcon;
 import snsde.bellsystem.utils.NodeUtils;
 import snsde.bellsystem.utils.Notification;
-import snsde.bellsystem.utils.Res;
-import snsde.bellsystem.utils.splashScreen;
 
 public class SystemB extends AnchorPane {
 
@@ -132,20 +123,12 @@ public class SystemB extends AnchorPane {
     public ClipboardContent content = new ClipboardContent();
 
     public final void createInterface() {
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), this);
-        fadeIn.setFromValue(0);
-        fadeIn.setToValue(1);
-        fadeIn.setCycleCount(1);
-
-        fadeIn.play();
-
         topPane();
         playerPane();
         schPane();
         timePane();
         bellPane();
         footPane();
-
     }
 
     public final void topPane() {
@@ -153,9 +136,11 @@ public class SystemB extends AnchorPane {
         Mlbl.prefHeight(85.0);
         Mlbl.getStyleClass().add("mlbl");
         NodeUtils.setAnchors(Mlbl, new Insets(0, 370, 605, 0));
+        
         mlbl1 = new Label("Designed and Developed by SNS_DE_SARAM");
         mlbl1.getStyleClass().add("mlbl1");
         NodeUtils.setAnchors(mlbl1, new Insets(23, 9, 647, 631));
+        
         mlbl2 = new Label("Contact : snsdesaram@gmail.com");
         mlbl2.getStyleClass().add("mlbl2");
         NodeUtils.setAnchors(mlbl2, new Insets(42, 10, 628, 630));
@@ -607,7 +592,7 @@ public class SystemB extends AnchorPane {
         exitA.initOwner(getScene().getWindow());
         exitA.showAndWait();
         if (exitA.getResult().getButtonData() == ButtonData.YES) {
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), this);
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.5), this);
             fadeOut.setFromValue(1);
             fadeOut.setToValue(0);
             fadeOut.setCycleCount(1);
@@ -632,43 +617,38 @@ public class SystemB extends AnchorPane {
     public SystemB() {
         super();
 
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("splash.fxml"));
-            NodeUtils.setAnchors(pane, new Insets(216, 170, 252, 170));
-            getChildren().addAll(pane);
+        AnchorPane pane = Splash.getInstance();
+        NodeUtils.setAnchors(pane, new Insets(216, 170, 252, 170));
+        getChildren().addAll(pane);
 
-            //Load splash screen with fade in effect
-            FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), pane);
-            fadeIn.setFromValue(0);
-            fadeIn.setToValue(1);
-            fadeIn.setCycleCount(1);
+        //Load splash screen with fade in effect
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), pane);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.setCycleCount(1);
 
-            //Finish splash with fade out effect
-            FadeTransition fadeOut = new FadeTransition(Duration.seconds(4), pane);
-            fadeOut.setFromValue(1);
-            fadeOut.setToValue(0);
-            fadeOut.setCycleCount(1);
+        //Finish splash with fade out effect
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(4), pane);
+        fadeOut.setFromValue(1);
+        fadeOut.setToValue(0);
+        fadeOut.setCycleCount(1);
 
-            fadeIn.play();
+        fadeIn.play();
 
-            fadeIn.setOnFinished((e) -> {
-                init_services();
-                fadeOut.play();
-            });
+        fadeIn.setOnFinished((e) -> {
+            init_services();
+            fadeOut.play();
+        });
 
-            //After fade out, load actual content
-            fadeOut.setOnFinished((e) -> {
-                Utils.log("INIT", "System", "Running FXML Interface Loader Deamon...");
-                getStyleClass().add("pane");
-                createInterface();
-                Utils.log("INIT", "System", "Done loading FXML Interfaces");
-                nf.showmsg("i", "System is ready", msglbl);
-                starttimeServer();
-            });
-        } catch (IOException ex) {
-            Utils.log("ERROR", "SYSTEM", "INIT ERROR");
-            nf.showalert("Error on Initializing System", "e");
-        }
+        //After fade out, load actual content
+        fadeOut.setOnFinished((e) -> {
+            Utils.log("INIT", "System", "Running FXML Interface Loader Deamon...");
+            getStyleClass().add("pane");
+            createInterface();
+            Utils.log("INIT", "System", "Done loading FXML Interfaces");
+            nf.showmsg("i", "System is ready", msglbl);
+            starttimeServer();
+        });
     }
 
     public void init_services() {
